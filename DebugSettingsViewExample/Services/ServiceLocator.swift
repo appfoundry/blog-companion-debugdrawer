@@ -12,14 +12,24 @@ import UIKit
 struct ServiceLocator {
     
     let stringService:StringService
-    private var debugWindow: UIWindow?
+    private let debugWindow: UIWindow
     
     init() {
         let defaultStringService = ProductionStringService()
         #if DEBUG
+            // Get the frame of our screen
             let frame = UIScreen.mainScreen().bounds
+            
+            // Create a new debug window, and position it at the top right of our screen
+            // (make sure to keep a reference to the window, it will be removed from memory otherwise!)
             self.debugWindow = WindowForDebug(frame: CGRect(x: CGRectGetWidth(frame) - 75.0, y: 0, width: 75, height: 75))
-            self.debugWindow!.hidden = false
+            
+            // Make the window appear
+            self.debugWindow.hidden = false
+
+            // Assign a root view controller to the window
+            let settingsVC = SettingsViewControllerForDebug()
+            debugWindow.rootViewController = settingsVC
 
             
             stringService = StringServiceForDebug(defaultStringService:defaultStringService)

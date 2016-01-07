@@ -12,10 +12,14 @@ class WindowForDebug: UIWindow {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        // Make the window transparent, so that it doesn't hide the actual applications content
         self.backgroundColor = UIColor.clearColor()
+        
+        // Make sure the 'z-position' of the window is above the application window and all other windows that might popup
         self.windowLevel = UIWindowLevelStatusBar + 100.0
-        let settingsVC = SettingsViewControllerForDebug()
-        self.rootViewController = settingsVC
+        
+        // Add a pan gesture recognizer, so we can move the debug window around
         let pan = UIPanGestureRecognizer(target: self, action: Selector("panned:"))
         self.addGestureRecognizer(pan)
     }

@@ -14,6 +14,7 @@
 		27251F6F1BFCCCA000139998 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27251F6D1BFCCCA000139998 /* LaunchScreen.storyboard */; };
 		27251F771BFCCD3100139998 /* WindowForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27251F761BFCCD3100139998 /* WindowForDebug.swift */; };
 		27251F791BFCCF9B00139998 /* SettingsViewControllerForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27251F781BFCCF9B00139998 /* SettingsViewControllerForDebug.swift */; };
+		27C8EFE91C3ECB31004C87BA /* NSUserDefaultsForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */; };
 		27D3C5BC1C3D605B000F7133 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5BB1C3D605B000F7133 /* ServiceLocator.swift */; };
 		27D3C5C11C3D61BD000F7133 /* ProductionStringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5C01C3D61BD000F7133 /* ProductionStringService.swift */; };
 		27D3C5C31C3D61CC000F7133 /* StringServiceForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5C21C3D61CC000F7133 /* StringServiceForDebug.swift */; };
@@ -32,6 +33,7 @@
 		27251F701BFCCCA000139998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27251F761BFCCD3100139998 /* WindowForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowForDebug.swift; sourceTree = "<group>"; };
 		27251F781BFCCF9B00139998 /* SettingsViewControllerForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerForDebug.swift; sourceTree = "<group>"; };
+		27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsForDebug.swift; sourceTree = "<group>"; };
 		27D3C5BB1C3D605B000F7133 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		27D3C5C01C3D61BD000F7133 /* ProductionStringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionStringService.swift; sourceTree = "<group>"; };
 		27D3C5C21C3D61CC000F7133 /* StringServiceForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringServiceForDebug.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		27251F631BFCCCA000139998 /* DebugSettingsViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				27C8EFE71C3ECB10004C87BA /* Extensions */,
 				27D3C5BF1C3D619A000F7133 /* Services */,
 				27251F641BFCCCA000139998 /* AppDelegate.swift */,
 				27251F661BFCCCA000139998 /* ViewController.swift */,
@@ -84,6 +87,14 @@
 				27251F781BFCCF9B00139998 /* SettingsViewControllerForDebug.swift */,
 			);
 			path = DebugSettingsViewExample;
+			sourceTree = "<group>";
+		};
+		27C8EFE71C3ECB10004C87BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		27D3C5BF1C3D619A000F7133 /* Services */ = {
@@ -243,6 +254,7 @@
 				27251F651BFCCCA000139998 /* AppDelegate.swift in Sources */,
 				27D3C5C11C3D61BD000F7133 /* ProductionStringService.swift in Sources */,
 				27D3C5C51C3D61DB000F7133 /* StringService.swift in Sources */,
+				27C8EFE91C3ECB31004C87BA /* NSUserDefaultsForDebug.swift in Sources */,
 				27251F771BFCCD3100139998 /* WindowForDebug.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

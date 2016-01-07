@@ -10,25 +10,6 @@ import Foundation
 
 class StringServiceForDebug : StringService {
     
-    var customDebugMessage:String {
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("debug.stringService.custom") as? String ?? "Hello Debugger"
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey:"debug.stringService.custom")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-    var useDefault:Bool{
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("debug.stringService.useDefault") as? Bool ?? true
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey:"debug.stringService.useDefault")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-
     let defaultStringService:StringService
     
     init(defaultStringService:StringService) {
@@ -36,10 +17,10 @@ class StringServiceForDebug : StringService {
     }
     
     func greeting() -> String {
-        if (useDefault) {
+        if (NSUserDefaults.standardUserDefaults().useDefault) {
             return defaultStringService.greeting()
         } else {
-            return customDebugMessage
+            return NSUserDefaults.standardUserDefaults().customDebugMessage
         }
     }
 }

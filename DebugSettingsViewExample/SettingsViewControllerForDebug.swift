@@ -11,20 +11,13 @@ import Eureka
 
 class SettingsViewControllerForDebug: UIViewController {
     
-    var stringService:StringServiceForDebug {
-        get {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
-            return appDelegate.serviceLocator!.stringService as! StringServiceForDebug;
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
         let button = UIButton(type: .RoundedRect)
         button.tintColor = UIColor.orangeColor()
         button.setTitle("Debug", forState: .Normal)
-        button.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: "buttonTapped:", forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         self.view .addConstraints([NSLayoutConstraint(item: button, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1.0, constant: 0.0), NSLayoutConstraint(item: button, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1.0, constant: 0.0)])
@@ -40,7 +33,10 @@ class SettingsViewControllerForDebug: UIViewController {
     }
     
     func buttonTapped(button:UIButton) {
+        // Hide the debug window
         self.view.window?.hidden = true
+        
+        //Present the form controller on the 'top' presented view controller of the app
         let controller = FormViewController()
         controller.form = Form()
             +++ self.stringManipulationSection()
@@ -49,26 +45,26 @@ class SettingsViewControllerForDebug: UIViewController {
         controller.navigationItem.rightBarButtonItem = item
         controller.title = "Debug Settings and Info"
         let nc = UINavigationController(rootViewController: controller)
-        self.deepestPresentedViewController()?.presentViewController(nc, animated: true) {}
+        self.topPresentedViewController()?.presentViewController(nc, animated: true) {}
     }
     
     func close() {
         self.view.window?.hidden = false
-        self.deepestPresentedViewController()?.dismissViewControllerAnimated(true) {}
+        self.topPresentedViewController()?.dismissViewControllerAnimated(true) {}
     }
     
     private func stringManipulationSection() -> Section {
-        return Section("StringService Selection") <<< SwitchRow() { [weak self] row in
-            row.title = "Use the production service"
-            row.value = self?.stringService.useDefault
-        }.onChange() { [weak self] row in
-            self?.stringService.useDefault = row.value ?? false
+        return Section("StringService Selection") <<< SwitchRow() {
+            $0.title = "Use the production service"
+            $0.value = NSUserDefaults.standardUserDefaults().useDefault
+        }.onChange() {
+            NSUserDefaults.standardUserDefaults().useDefault = $0.value ?? false
         }
-            <<< TextRow() { [weak self] row in
-                row.title = "Custom message"
-                row.value = self?.stringService.customDebugMessage
-        }.onChange() { [weak self] row in
-            self?.stringService.customDebugMessage = row.value ?? "Hello"
+            <<< TextRow() {
+                $0.title = "Custom message"
+                $0.value = NSUserDefaults.standardUserDefaults().customDebugMessage
+        }.onChange() {
+            NSUserDefaults.standardUserDefaults().customDebugMessage = $0.value.flatMap { $0.isEmpty ? nil : $0 } ?? "Hello Void"
         }
     }
     
@@ -86,7 +82,7 @@ class SettingsViewControllerForDebug: UIViewController {
         })
     }
     
-    private func deepestPresentedViewController() -> UIViewController? {
+    private func topPresentedViewController() -> UIViewController? {
         return UIApplication.sharedApplication().keyWindow.flatMap({ (window) -> UIViewController? in
             return window.rootViewController.map({ (vc) -> UIViewController in
                 var found = vc
