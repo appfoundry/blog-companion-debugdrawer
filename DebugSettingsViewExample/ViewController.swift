@@ -11,16 +11,10 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var generatedGreetingLabel: UILabel!
-    var stringService:StringService?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stringService = (UIApplication.sharedApplication().delegate as? AppDelegate)?.serviceLocator?.stringService
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    var stringService:StringService? {
+        get {
+            return (UIApplication.sharedApplication().delegate as? AppDelegate)?.serviceLocator?.stringService
+        }
     }
     
     @IBAction func generateGreeting() {

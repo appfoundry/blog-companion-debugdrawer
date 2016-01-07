@@ -15,6 +15,7 @@
 		27251F771BFCCD3100139998 /* WindowForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27251F761BFCCD3100139998 /* WindowForDebug.swift */; };
 		27251F791BFCCF9B00139998 /* SettingsViewControllerForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27251F781BFCCF9B00139998 /* SettingsViewControllerForDebug.swift */; };
 		27C8EFE91C3ECB31004C87BA /* NSUserDefaultsForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */; };
+		27C8EFEB1C3EDB83004C87BA /* NSBundleInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8EFEA1C3EDB83004C87BA /* NSBundleInfoExtension.swift */; };
 		27D3C5BC1C3D605B000F7133 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5BB1C3D605B000F7133 /* ServiceLocator.swift */; };
 		27D3C5C11C3D61BD000F7133 /* ProductionStringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5C01C3D61BD000F7133 /* ProductionStringService.swift */; };
 		27D3C5C31C3D61CC000F7133 /* StringServiceForDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3C5C21C3D61CC000F7133 /* StringServiceForDebug.swift */; };
@@ -34,6 +35,7 @@
 		27251F761BFCCD3100139998 /* WindowForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowForDebug.swift; sourceTree = "<group>"; };
 		27251F781BFCCF9B00139998 /* SettingsViewControllerForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerForDebug.swift; sourceTree = "<group>"; };
 		27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaultsForDebug.swift; sourceTree = "<group>"; };
+		27C8EFEA1C3EDB83004C87BA /* NSBundleInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleInfoExtension.swift; sourceTree = "<group>"; };
 		27D3C5BB1C3D605B000F7133 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		27D3C5C01C3D61BD000F7133 /* ProductionStringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionStringService.swift; sourceTree = "<group>"; };
 		27D3C5C21C3D61CC000F7133 /* StringServiceForDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringServiceForDebug.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				27C8EFE81C3ECB31004C87BA /* NSUserDefaultsForDebug.swift */,
+				27C8EFEA1C3EDB83004C87BA /* NSBundleInfoExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			files = (
 				27251F671BFCCCA000139998 /* ViewController.swift in Sources */,
 				27D3C5BC1C3D605B000F7133 /* ServiceLocator.swift in Sources */,
+				27C8EFEB1C3EDB83004C87BA /* NSBundleInfoExtension.swift in Sources */,
 				27251F791BFCCF9B00139998 /* SettingsViewControllerForDebug.swift in Sources */,
 				27D3C5C31C3D61CC000F7133 /* StringServiceForDebug.swift in Sources */,
 				27251F651BFCCCA000139998 /* AppDelegate.swift in Sources */,
@@ -367,7 +371,7 @@
 			baseConfigurationReference = ECDDB22DAA4914714B8BA1DC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EXCLUDED_SOURCE_FILE_NAMES = "";
+				BUILD_ENV = DEBUG;
 				INFOPLIST_FILE = DebugSettingsViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
@@ -381,7 +385,7 @@
 			baseConfigurationReference = 19D3334FA6EA93C4C2D42428 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EXCLUDED_SOURCE_FILE_NAMES = "*ForDebug.*";
+				BUILD_ENV = RELEASE;
 				INFOPLIST_FILE = DebugSettingsViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DRELEASE";

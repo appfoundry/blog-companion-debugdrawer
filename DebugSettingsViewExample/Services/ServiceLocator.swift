@@ -9,32 +9,46 @@
 import Foundation
 import UIKit
 
-struct ServiceLocator {
+class ServiceLocator {
     
-    let stringService:StringService
-    private let debugWindow: UIWindow
     
-    init() {
-        let defaultStringService = ProductionStringService()
-        #if DEBUG
+    private let productionService = ProductionStringService()
+    private var debugService:StringService?
+    
+    var stringService:StringService {
+        get {
+            if NSBundle.mainBundle().isDebug {
+                debugService = debugService ?? StringServiceForDebug()
+                if (NSUserDefaults.standardUserDefaults().useDefault) {
+                    return productionService
+                } else {
+                    return debugService!
+                }
+            } else {
+                return productionService
+            }
+        }
+    }
+    
+    private var debugWindow: UIWindow? = {
+        if NSBundle.mainBundle().isDebug {
             // Get the frame of our screen
             let frame = UIScreen.mainScreen().bounds
             
             // Create a new debug window, and position it at the top right of our screen
             // (make sure to keep a reference to the window, it will be removed from memory otherwise!)
-            self.debugWindow = WindowForDebug(frame: CGRect(x: CGRectGetWidth(frame) - 75.0, y: 0, width: 75, height: 75))
+            let debugWindow = WindowForDebug(frame: CGRect(x: CGRectGetWidth(frame) - 75.0, y: 0, width: 75, height: 75))
             
             // Make the window appear
-            self.debugWindow.hidden = false
-
+            debugWindow.hidden = false
+            
             // Assign a root view controller to the window
             let settingsVC = SettingsViewControllerForDebug()
             debugWindow.rootViewController = settingsVC
-
             
-            stringService = StringServiceForDebug(defaultStringService:defaultStringService)
-        #else
-            stringService = defaultStringService
-        #endif
-    }
+            return debugWindow
+        } else {
+            return nil
+        }
+    }()
 }

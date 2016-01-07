@@ -9,18 +9,7 @@
 import Foundation
 
 class StringServiceForDebug : StringService {
-    
-    let defaultStringService:StringService
-    
-    init(defaultStringService:StringService) {
-        self.defaultStringService = defaultStringService
-    }
-    
     func greeting() -> String {
-        if (NSUserDefaults.standardUserDefaults().useDefault) {
-            return defaultStringService.greeting()
-        } else {
-            return NSUserDefaults.standardUserDefaults().customDebugMessage
-        }
+        return NSUserDefaults.standardUserDefaults().customDebugMessage
     }
 }
