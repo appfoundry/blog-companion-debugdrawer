@@ -371,7 +371,6 @@
 			baseConfigurationReference = ECDDB22DAA4914714B8BA1DC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_ENV = DEBUG;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
 				INFOPLIST_FILE = DebugSettingsViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -386,7 +385,6 @@
 			baseConfigurationReference = 19D3334FA6EA93C4C2D42428 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_ENV = RELEASE;
 				EXCLUDED_SOURCE_FILE_NAMES = "*ForDebug*";
 				INFOPLIST_FILE = DebugSettingsViewExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
