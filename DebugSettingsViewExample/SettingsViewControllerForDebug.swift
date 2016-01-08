@@ -79,10 +79,6 @@ class SettingsViewControllerForDebug: UIViewController {
                     $0.title = "Build"
                     $0.value = appInfo["CFBundleVersion"] as? String
                 }
-                <<< LabelRow() {
-                    $0.title = "Build Environment"
-                    $0.value = appInfo["AFBuildEnvironment"] as? String
-                }
         })
     }
     
