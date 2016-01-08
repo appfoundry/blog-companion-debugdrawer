@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var serviceLocator:ServiceLocator?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        serviceLocator = ServiceLocator()
+        #if DEBUG
+        serviceLocator = ServiceLocatorForDebug()
+        #else
+        serviceLocator = ProductionServiceLocator()
+        #endif
         return true
     }
 }
